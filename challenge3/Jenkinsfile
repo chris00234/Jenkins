@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+
+    parameters{
+        string(defaultValue: "custom", description: "Enter custom deployment name", name: "deployEnv")
+        choice(choices: ["EU-WEST-2A", "WEST2B", "EU-WEST-2C"], description: "Which env to deploy in ?", name: "deployEnv")
+    }
+
+    stages{
+        stage("Demo"){
+            steps{
+                echo "string s set to ${params.deployEnv}"
+                echo "Choice s set to ${params.deployEnv}"
+            }
+        }
+    }
+}
